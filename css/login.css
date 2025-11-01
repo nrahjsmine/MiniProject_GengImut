@@ -1,0 +1,130 @@
+/* =============================
+   ENDURE LEGENDS LOGIN PAGE STYLE
+   ============================= */
+
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top, #0a0a0a 0%, #000 100%);
+    background-attachment: fixed;
+    overflow: hidden;
+  }
+  
+  /* Container */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Box */
+  .form-box {
+    background: rgba(25, 25, 25, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 40px 50px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(225, 6, 0, 0.3);
+    backdrop-filter: blur(8px);
+    animation: fadeIn 1s ease;
+  }
+  
+  /* Heading */
+  .form-box h1 {
+    color: #e10600;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+  }
+  
+  /* Error message */
+  .error {
+    background: rgba(225, 6, 0, 0.1);
+    color: #ff4a4a;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+  }
+  
+  /* Labels */
+  .form-box label {
+    display: block;
+    text-align: left;
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+  
+  /* Inputs */
+  .form-box input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #111;
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
+    margin-bottom: 18px;
+  }
+  
+  .form-box input:focus {
+    border-color: #e10600;
+    box-shadow: 0 0 8px rgba(225, 6, 0, 0.6);
+  }
+  
+  /* Button */
+  .form-box button {
+    background: #e10600;
+    color: white;
+    font-weight: 600;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .form-box button:hover {
+    background: white;
+    color: #e10600;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Switch link */
+  .switch {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #bbb;
+  }
+  
+  .switch a {
+    color: #e10600;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .switch a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  

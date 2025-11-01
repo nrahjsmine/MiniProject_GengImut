@@ -1,0 +1,269 @@
+/* =====================================================
+   GLOBAL RESET
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #0b0b0b;
+  color: #f2f2f2;
+  padding: 0;
+  margin: 0;
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+header {
+  background: #1a1a1a;
+  padding: 15px 0;
+  border-bottom: 2px solid #e10600;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.logo h1 {
+  color: #e10600;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #e10600;
+}
+
+.btn-login {
+  background-color: #e10600;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #b00000;
+}
+
+/* =====================================================
+   ADMIN CONTAINER
+===================================================== */
+.admin-container {
+  width: 90%;
+  margin: 40px auto;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+h2 {
+  color: #e10600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(225,6,0,0.6);
+  text-align: center;
+}
+
+/* =====================================================
+   TABS
+===================================================== */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.tab-link {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.tab-link:hover {
+  background: #333;
+}
+
+.tab-link.active {
+  background: #e10600;
+}
+
+/* =====================================================
+   TABLES
+===================================================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+  background-color: #101010;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(225,6,0,0.3);
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+th {
+  background-color: #1a1a1a;
+  color: #e10600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+tr:hover td {
+  background-color: #1f1f1f;
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+button.approve {
+  background-color: #28a745;
+  color: #fff;
+}
+
+button.approve:hover {
+  background-color: #1e7e34;
+}
+
+button.reject {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+button.reject:hover {
+  background-color: #b21f2d;
+}
+
+button.vehicle-update {
+  background-color: #e10600;
+  color: #fff;
+}
+
+button.vehicle-update:hover {
+  background-color: #b00000;
+}
+
+/* =====================================================
+   SELECT
+===================================================== */
+select {
+  padding: 5px 8px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #1a1a1a;
+  color: #f2f2f2;
+}
+
+/* =====================================================
+   STATUS COLORS
+===================================================== */
+/* Booking status */
+.status-pending {
+  color: orange;
+  font-weight: bold;
+}
+
+.status-approved {
+  color: green;
+  font-weight: bold;
+}
+
+.status-rejected {
+  color: red;
+  font-weight: bold;
+}
+
+/* Vehicle status */
+.vehicle-available {
+  color: green;
+  font-weight: bold;
+}
+
+.vehicle-booked {
+  color: orange;
+  font-weight: bold;
+}
+
+.vehicle-maintenance {
+  color: gray;
+  font-weight: bold;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  color: #777;
+  border-top: 1px solid #333;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media screen and (max-width: 900px) {
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  th, td {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 5px 8px;
+    font-size: 13px;
+  }
+
+  select {
+    padding: 4px 6px;
+    font-size: 13px;
+  }
+}

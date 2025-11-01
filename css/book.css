@@ -1,0 +1,168 @@
+/* =====================================================
+   GLOBAL RESET
+===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0b0b0b;
+    color: #f2f2f2;
+    overflow-x: hidden;
+  }
+  
+  /* =====================================================
+     NAVBAR
+  ===================================================== */
+  header {
+    background: rgba(10, 10, 10, 0.95);
+    border-bottom: 2px solid #e10600;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    flex-wrap: wrap;
+  }
+  
+  .logo h1 {
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 10px rgba(225, 6, 0, 0.4);
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+  }
+  
+  .nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .nav-links a:hover {
+    color: #fff;
+    border-bottom: 2px solid #e10600;
+  }
+  
+  /* =====================================================
+     BOOKING SECTION
+  ===================================================== */
+  .booking-section {
+    padding: 80px 8%;
+    display: flex;
+    justify-content: center;
+    min-height: 80vh;
+  }
+  
+  .container {
+    background: #181818;
+    padding: 30px 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(225, 6, 0, 0.4);
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .container h2 {
+    color: #e10600;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(225, 6, 0, 0.4);
+  }
+  
+  .container p {
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  
+  .booking-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #f2f2f2;
+  }
+  
+  .booking-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background: #0d0d0d;
+    color: #f2f2f2;
+  }
+  
+  .booking-form input:focus {
+    border-color: #e10600;
+    outline: none;
+  }
+  
+  .booking-form button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #e10600, #b00000);
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .booking-form button:hover {
+    background: #fff;
+    color: #e10600;
+    transform: scale(1.05);
+  }
+  
+  /* =====================================================
+     RESPONSIVE DESIGN
+  ===================================================== */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .nav-links {
+      justify-content: center;
+    }
+  
+    .booking-section {
+      padding: 50px 5%;
+    }
+  
+    .container {
+      padding: 20px;
+    }
+  }
+  
