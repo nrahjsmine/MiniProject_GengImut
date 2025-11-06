@@ -2,9 +2,9 @@
 session_start();
 include '../login_signup/db_conn.php';
 
-// ===============================
+
 // AUTO UPDATE BOOKING STATUS
-// ===============================
+
 $today = date('Y-m-d');
 
 // 1️⃣ Tukar kereta jadi available bila end_date dah lepas dan booking approved
@@ -217,7 +217,7 @@ function vehicleClass($status) {
                     <input type="hidden" name="vehicle_id" value="<?php echo $v['vehicle_id']; ?>">
                     <select name="new_status">
                         <option value="available" <?php if($v['availability']=='available') echo 'selected'; ?>>Available</option>
-                        <option value="booked" <?php if($v['availability']=='booked') echo 'selected'; ?>>Booked</option>
+                        <option value="maintenance" <?php if($v['availability']=='maintenance') echo 'selected'; ?>>Maintenance</option>
                         
                     </select>
                     <button type="submit" name="vehicle_update" class="vehicle-update">Update</button>
