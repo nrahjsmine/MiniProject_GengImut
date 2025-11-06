@@ -60,7 +60,7 @@ if (!isset($_SESSION['name']) || $_SESSION['user_type'] != 'customer') {
     <ul class="nav-links">
       <li><a href="../Index/index.html">Home</a></li>
       <li><a href="../customer/mybookings.php">My Bookings</a></li>
-      <li><a href="#">Profile</a></li>
+     
     </ul>
     <a href="../login_signup/logout.php" class="btn-logout">Logout</a>
   </nav>
@@ -130,17 +130,27 @@ if (!isset($_SESSION['name']) || $_SESSION['user_type'] != 'customer') {
             ? "book.php?vehicle_id={$vehicle_id}&rent_date={$rent_date}&return_date={$return_date}"
             : "book.php?vehicle_id={$vehicle_id}";
 
-          echo "
-          <div class='vehicle-card'>
-            <img src='$imagePath' alt='$model' onerror=\"this.src='../Images/default.jpg'\"> 
-            <h3>$model</h3>
-            <div class='vehicle-info'>
-              <p><strong>Plate No:</strong> $plate</p>
-              <p><strong>Price:</strong> RM $price / day</p>
-              <p class='status available'><strong>Status:</strong> Available</p>
-            </div>
-            <a href='$rent_link' class='book-btn'>Book Now</a>
-          </div>";
+            $status = htmlspecialchars($row['availability']);
+            $statusClass = strtolower($status); // contohnya available / booked / maintenance
+            
+            echo "
+            <div class='vehicle-card'>
+              <img src='$imagePath' alt='$model' onerror=\"this.src='../Images/default.jpg'\"> 
+              <h3>$model</h3>
+              <div class='vehicle-info'>
+                <p><strong>Plate No:</strong> $plate</p>
+                <p><strong>Price:</strong> RM $price / day</p>
+                <p class='status $statusClass'><strong>Status:</strong> " . ucfirst($status) . "</p>
+              </div>";
+
+              if ($status == 'available') {
+                echo "<a href='$rent_link' class='book-btn'>Book Now</a>";
+              } else {
+                echo "<button class='book-btn' disabled style='background:gray; cursor:not-allowed;'>Not Available</button>";
+              }
+              
+              echo "</div>"; // tutup vehicle-card
+              
         }
       } else {
         echo "<p class='no-vehicles'>No vehicles available for the selected dates.</p>";

@@ -56,19 +56,23 @@ if (!$result) {
     <h2>My Bookings</h2>
 
     <?php if (mysqli_num_rows($result) > 0) { ?>
-    <table>
-        <tr>
-            <th>Booking ID</th>
-            <th>Vehicle</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Total Amount (RM)</th>
-            <th>Payment Status</th>
-            <th>Booking Status</th>
-        </tr>
+        <table>
+    <tr>
+        <th>No</th>
+        <th>Booking ID</th>
+        <th>Vehicle</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Total Amount (RM)</th>
+        <th>Booking Status</th>
+    </tr>
 
-        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-        <tr>
+    <?php 
+    $count = 1;
+    while ($row = mysqli_fetch_assoc($result)) { 
+    ?>
+    <tr>
+            <td><?php echo $count++; ?></td> <!-- Papar nombor urutan -->
             <td><?php echo $row['rent_id']; ?></td>
             <td><?php echo htmlspecialchars($row['model']); ?></td>
             <td><?php echo $row['start_date']; ?></td>
@@ -76,11 +80,7 @@ if (!$result) {
             <td><?php echo number_format($row['total_amount'], 2); ?></td>
 
             <!-- Payment Status -->
-            <td>
-                <span class="status <?php echo strtolower($row['payment_status']); ?>">
-                    <?php echo ucfirst($row['payment_status']); ?>
-                </span>
-            </td>
+            
 
             <!-- Booking Status -->
             <td>

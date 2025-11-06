@@ -8,6 +8,7 @@ include '../login_signup/db_conn.php';
 $today = date('Y-m-d');
 
 // 1️⃣ Tukar kereta jadi available bila end_date dah lepas dan booking approved
+// 🚫 Tapi jangan ubah kalau kereta tu tengah maintenance
 $updateVehicles = "
     UPDATE vehicles 
     SET availability = 'available' 
@@ -16,8 +17,11 @@ $updateVehicles = "
         WHERE end_date < '$today' 
         AND status = 'approved'
     )
+    AND availability != 'maintenance'
 ";
 mysqli_query($conn, $updateVehicles);
+
+
 
 // 2️⃣ Tukar status booking jadi completed bila dah lepas tarikh
 $updateRentals = "
@@ -116,27 +120,33 @@ function vehicleClass($status) {
     <?php if ($active_tab == 'bookings'): ?>
     <!-- 📋 All Bookings Table -->
     <table>
-        <tr>
-            <th>Booking ID</th>
-            <th>Customer</th>
-            <th>Vehicle</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Total (RM)</th>
-            <th>Payment Proof</th>
-            <th>Payment Status</th>
-            <th>Booking Status</th>
-            <th>Action</th>
-        </tr>
+    <tr>
+        <th>No</th>
+        <th>Booking ID</th>
+        <th>Customer</th>
+        <th>Vehicle</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Total (RM)</th>
+        <th>Payment Proof</th>
+        <th>Booking Status</th>
+        <th>Action</th>
+    </tr>
 
-        <?php while($row = mysqli_fetch_assoc($bookings_result)): ?>
-        <tr>
-            <td><?php echo $row['rent_id']; ?></td>
-            <td><?php echo htmlspecialchars($row['username']); ?></td>
-            <td><?php echo htmlspecialchars($row['model']); ?></td>
-            <td><?php echo $row['start_date']; ?></td>
-            <td><?php echo $row['end_date']; ?></td>
-            <td><?php echo number_format($row['total_amount'], 2); ?></td>
+    <?php 
+    $count = 1; // mula dari 1
+    while($row = mysqli_fetch_assoc($bookings_result)): 
+    ?>
+    <tr>
+        <td><?php echo $count++; ?></td> <!-- nombor urutan -->
+        <td><?php echo $row['rent_id']; ?></td>
+        <td><?php echo htmlspecialchars($row['username']); ?></td>
+        <td><?php echo htmlspecialchars($row['model']); ?></td>
+        <td><?php echo $row['start_date']; ?></td>
+        <td><?php echo $row['end_date']; ?></td>
+        <td><?php echo number_format($row['total_amount'], 2); ?></td>
+        ...
+
 
             <!-- 📷 Payment proof -->
             <td>
@@ -148,14 +158,7 @@ function vehicleClass($status) {
             </td>
 
             <!-- 💳 Payment status -->
-            <td style="color:
-                <?php 
-                    if ($row['payment_status'] == 'approved') echo 'limegreen';
-                    elseif ($row['payment_status'] == 'rejected') echo 'red';
-                    else echo 'orange';
-                ?>">
-                <?php echo ucfirst($row['payment_status']); ?>
-            </td>
+            
 
             <!-- 📋 Booking status -->
             <td><?php echo ucfirst($row['status']); ?></td>
@@ -215,7 +218,7 @@ function vehicleClass($status) {
                     <select name="new_status">
                         <option value="available" <?php if($v['availability']=='available') echo 'selected'; ?>>Available</option>
                         <option value="booked" <?php if($v['availability']=='booked') echo 'selected'; ?>>Booked</option>
-                        <option value="maintenance" <?php if($v['availability']=='maintenance') echo 'selected'; ?>>Maintenance</option>
+                        
                     </select>
                     <button type="submit" name="vehicle_update" class="vehicle-update">Update</button>
                 </form>
@@ -237,7 +240,6 @@ function vehicleClass($status) {
             <th>Start Date</th>
             <th>End Date</th>
             <th>Total (RM)</th>
-            <th>Payment</th>
             <th>Status</th>
             <th>Deleted At</th>
         </tr>
@@ -251,7 +253,7 @@ function vehicleClass($status) {
             <td><?php echo $h['start_date']; ?></td>
             <td><?php echo $h['end_date']; ?></td>
             <td><?php echo number_format($h['total_amount'], 2); ?></td>
-            <td><?php echo ucfirst($h['payment_status']); ?></td>
+            
             <td><?php echo ucfirst($h['status']); ?></td>
             <td><?php echo $h['deleted_at']; ?></td>
         </tr>
