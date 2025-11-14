@@ -84,9 +84,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // ✅ 4️⃣ Simpan booking ke DB
     $insert = "INSERT INTO rentals 
-        (id, vehicle_id, total_amount, start_date, end_date, status, payment_status, payment_proof, booking_status)
+        (id, vehicle_id, total_amount, start_date, end_date,  payment_proof, status)
         VALUES 
-        ('$user_id', '$vehicle_id', '$total_amount', '$start_date', '$end_date', 'Pending', 'Pending', '$payment_proof', 'Pending')";
+        ('$user_id', '$vehicle_id', '$total_amount', '$start_date',  '$end_date',  '$payment_proof', 'Pending')";
     
     if (mysqli_query($conn, $insert)) {
         echo "<script>alert('✅ Booking sent! Please wait for payment confirmation.'); window.location.href='mybookings.php';</script>";

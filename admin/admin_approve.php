@@ -14,25 +14,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['action'], $_POST['ren
     $action = strtolower($_POST['action']);
 
     if ($action === 'approve') {
-        // 1️⃣ Update payment_status jadi approved
-        $sql = "UPDATE rentals SET payment_status='approved', status='approved' WHERE rent_id=$rent_id";
+
+        // ✔ Update status kepada approved
+        $sql = "UPDATE rentals SET status='approved' WHERE rent_id=$rent_id";
+
         if (mysqli_query($conn, $sql)) {
 
-            // 2️⃣ Dapatkan vehicle_id untuk ubah availability
+            // ✔ Dapatkan vehicle_id untuk ubah availability (jika perlu)
             $vsql = "SELECT vehicle_id FROM rentals WHERE rent_id=$rent_id";
             $vres = mysqli_query($conn, $vsql);
             if ($vrow = mysqli_fetch_assoc($vres)) {
                 $vehicle_id = $vrow['vehicle_id'];
-                // 3️⃣ Tukar kereta jadi "booked"
-               // mysqli_query($conn, "UPDATE vehicles SET availability='booked' WHERE vehicle_id=$vehicle_id");
+
+                // Optional: Kalau nak tukar availability
+                // mysqli_query($conn, "UPDATE vehicles SET availability='booked' WHERE vehicle_id=$vehicle_id");
             }
+
         } else {
             die("❌ SQL Error (approve): " . mysqli_error($conn));
         }
 
     } elseif ($action === 'reject') {
-        // Reject: ubah payment_status dan status
-        $sql = "UPDATE rentals SET payment_status='rejected', status='rejected' WHERE rent_id=$rent_id";
+
+        // ✔ Ubah status kepada rejected
+        $sql = "UPDATE rentals SET status='rejected' WHERE rent_id=$rent_id";
+        
         if (!mysqli_query($conn, $sql)) {
             die("❌ SQL Error (reject): " . mysqli_error($conn));
         }
@@ -40,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['action'], $_POST['ren
 
     header("Location: admin_homepage.php?tab=bookings");
     exit();
+
 } else {
     echo "❌ Invalid request.";
 }

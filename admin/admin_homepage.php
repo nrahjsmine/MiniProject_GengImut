@@ -169,12 +169,12 @@ function vehicleClass($status) {
                 <form action="admin_approve.php" method="POST" style="display:inline;">
                     <input type="hidden" name="rent_id" value="<?php echo $row['rent_id']; ?>">
 
-                    <?php if(strtolower($row['payment_status']) == 'pending'): ?>
+                    <?php if(strtolower($row['status']) == 'pending'): ?>
                         <button type="submit" name="action" value="approve" class="approve">Approve</button>
                         <button type="submit" name="action" value="reject" class="reject">Reject</button>
-                    <?php elseif(strtolower($row['payment_status']) == 'approved'): ?>
+                    <?php elseif(strtolower($row['status']) == 'approved'): ?>
                         <span style="color:limegreen;">Approved</span>
-                    <?php elseif(strtolower($row['payment_status']) == 'rejected'): ?>
+                    <?php elseif(strtolower($row['status']) == 'rejected'): ?>
                         <span style="color:red;">Rejected</span>
                     <?php endif; ?>
                 </form>

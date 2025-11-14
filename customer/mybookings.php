@@ -79,7 +79,7 @@ if (!$result) {
             <td><?php echo $row['end_date']; ?></td>
             <td><?php echo number_format($row['total_amount'], 2); ?></td>
 
-            <!-- Payment Status -->
+            
             
 
             <!-- Booking Status -->
